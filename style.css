@@ -245,25 +245,48 @@ h2 {
 }
 
 .testimonial-card {
-  background: white;
+  background: linear-gradient(to top left, #eef2ff, #ffffff);
   padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgb(0 0 0 / 0.05);
-  font-style: italic;
-  color: #374151;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
   position: relative;
-  transition: box-shadow 0.3s ease;
+  color: #374151;
+  font-style: italic;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .testimonial-card:hover {
-  box-shadow: 0 8px 24px rgb(79 70 229 / 0.25);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(79, 70, 229, 0.25);
+}
+
+.testimonial-card::before {
+  content: '“';
+  font-size: 4rem;
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  color: #c7d2fe;
+  font-family: serif;
+  opacity: 0.3;
+}
+
+.testimonial-card p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
 }
 
 .testimonial-card footer {
-  margin-top: 1rem;
-  font-weight: 700;
+  font-weight: 600;
+  font-size: 1rem;
   color: #4f46e5;
+  text-align: right;
+  background: none;
+  padding: 0;
+  border: none;
 }
+
 
 /* PRICING */
 .pricing-grid {
