@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Feature Cards */
+.feature-card {
+  @apply flex flex-col items-center p-8 border border-gray-200 rounded-lg shadow transition hover:shadow-lg;
+}
+
+.feature-card img {
+  width: 64px;
+  height: 64px;
+}
+
+/* How it Works Steps */
+.how-step {
+  @apply flex items-start gap-6;
+}
+
+.step-number {
+  @apply flex-shrink-0 bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center text-lg font-bold;
+}
+
+/* Testimonials */
+.testimonial-card {
+  @apply bg-white p-8 rounded-lg shadow-md text-center text-gray-700;
+}
+
+.testimonial-card p {
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.testimonial-card footer {
+  font-weight: 600;
+  color: #2563eb; /* blue-600 */
+}
+
+/* Pricing Cards */
+.pricing-card {
+  transition: box-shadow 0.3s ease;
+}
+
+.pricing-card:hover {
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .feature-card, .pricing-card, .testimonial-card {
+    padding: 6;
+  }
+}
