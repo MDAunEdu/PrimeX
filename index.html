@@ -1,87 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>AI Video Maker - Turn Ideas Into Videos</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<style>
-  /* Custom scrollbar for nice look */
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-  ::-webkit-scrollbar-thumb {
-    background-color: #3b82f6; /* blue-500 */
-    border-radius: 10px;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Video Maker - Bring Your Ideas to Life</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body class="bg-gray-50 font-sans text-gray-800">
 
-<!-- NAVBAR -->
-<header class="bg-white shadow sticky top-0 z-50">
-  <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
-    <a href="#" class="text-3xl font-bold text-blue-600">AI Video Maker</a>
-    <nav class="space-x-6 hidden md:flex text-gray-700 font-semibold">
-      <a href="#features" class="hover:text-blue-600 transition">Features</a>
-      <a href="#how-it-works" class="hover:text-blue-600 transition">How It Works</a>
-      <a href="#pricing" class="hover:text-blue-600 transition">Pricing</a>
-      <a href="#testimonials" class="hover:text-blue-600 transition">Testimonials</a>
-      <a href="#contact" class="hover:text-blue-600 transition">Contact</a>
-      <button class="ml-6 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Login</button>
+  <!-- NAVBAR -->
+  <header class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+      <a href="#" class="text-3xl font-bold text-blue-600">AI Video Maker</a>
+      <nav class="space-x-6 hidden md:flex text-gray-700 font-semibold">
+        <a href="#features" class="hover:text-blue-600 transition">Features</a>
+        <a href="#how-it-works" class="hover:text-blue-600 transition">How It Works</a>
+        <a href="#pricing" class="hover:text-blue-600 transition">Pricing</a>
+        <a href="#testimonials" class="hover:text-blue-600 transition">Testimonials</a>
+        <a href="#contact" class="hover:text-blue-600 transition">Contact</a>
+        <button class="ml-6 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Login</button>
+      </nav>
+      <button id="menuBtn" class="md:hidden focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <nav id="mobileMenu" class="hidden md:hidden bg-white shadow-md px-6 py-4 space-y-4 font-semibold text-gray-700">
+      <a href="#features" class="block hover:text-blue-600 transition">Features</a>
+      <a href="#how-it-works" class="block hover:text-blue-600 transition">How It Works</a>
+      <a href="#pricing" class="block hover:text-blue-600 transition">Pricing</a>
+      <a href="#testimonials" class="block hover:text-blue-600 transition">Testimonials</a>
+      <a href="#contact" class="block hover:text-blue-600 transition">Contact</a>
+      <button class="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Login</button>
     </nav>
-    <button id="menuBtn" class="md:hidden focus:outline-none">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-      </svg>
-    </button>
-  </div>
+  </header>
 
-  <!-- Mobile Menu -->
-  <nav id="mobileMenu" class="hidden md:hidden bg-white shadow-md px-6 py-4 space-y-4 font-semibold text-gray-700">
-    <a href="#features" class="block hover:text-blue-600 transition">Features</a>
-    <a href="#how-it-works" class="block hover:text-blue-600 transition">How It Works</a>
-    <a href="#pricing" class="block hover:text-blue-600 transition">Pricing</a>
-    <a href="#testimonials" class="block hover:text-blue-600 transition">Testimonials</a>
-    <a href="#contact" class="block hover:text-blue-600 transition">Contact</a>
-    <button class="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Login</button>
-  </nav>
-</header>
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
 
-<script>
-  const menuBtn = document.getElementById('menuBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
-  menuBtn.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
-  });
-</script>
-
-<!-- HERO SECTION -->
-<section class="max-w-7xl mx-auto px-6 py-20 flex flex-col-reverse md:flex-row items-center gap-12">
-  <div class="flex-1 space-y-8">
-    <h1 class="text-5xl font-extrabold leading-tight text-gray-900">Bring Your Ideas to Life with AI Video Maker</h1>
-    <p class="text-lg text-gray-700 max-w-xl">
-      Create stunning videos from text instantly. No design skills needed — just your creativity and our AI.
-    </p>
-    <form id="videoForm" class="flex gap-3 max-w-lg" onsubmit="event.preventDefault(); alert('Video generation coming soon!')">
-      <input
-        type="text"
-        placeholder="Enter your video idea here..."
-        required
-        class="flex-grow border border-gray-300 rounded px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+  <!-- HERO SECTION -->
+  <section class="max-w-7xl mx-auto px-6 py-20 flex flex-col-reverse md:flex-row items-center gap-12">
+    <div class="flex-1 space-y-8">
+      <h1 class="text-5xl font-extrabold leading-tight text-gray-900">Bring Your Ideas to Life with AI Video Maker</h1>
+      <p class="text-lg text-gray-700 max-w-xl">
+        Create stunning videos from text instantly. No design skills needed — just your creativity and our AI.
+      </p>
+      <form id="videoForm" class="flex gap-3 max-w-lg" onsubmit="event.preventDefault(); alert('Video generation coming soon!')">
+        <input
+          type="text"
+          placeholder="Enter your video idea here..."
+          required
+          class="flex-grow border border-gray-300 rounded px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <button type="submit" class="bg-blue-600 text-white px-6 rounded hover:bg-blue-700 transition">
+          Generate Video
+        </button>
+      </form>
+      <p class="text-sm text-gray-500 mt-2">* This is a demo. Video generation is coming soon.</p>
+    </div>
+    <div class="flex-1 max-w-md">
+      <img
+        src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80"
+        alt="Creative video concept"
+        class="rounded-lg shadow-lg"
+        loading="lazy"
       />
-      <button type="submit" class="bg-blue-600 text-white px-6 rounded hover:bg-blue-700 transition">
-        Generate Video
+    </div>
+  </section>
+
+  <!-- FEATURES SECTION -->
+  <section id="features" class="max-w-7xl mx-auto px-6 py-20 bg-white">
+    <h2 class="text-4xl font-extrabold text-center mb-12 text-gray-900">Powerful Features to Create Stunning Videos</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <div class="feature-card">
+        <img src="https://img.icons8.com/ios-filled/64/2563eb/video-conference.png" alt="Text to Video" />
+        <h3 class="text-xl font-semibold mb-2 mt-4">Text-to-Video AI</h3>
+        <p class="text-gray-600 text-center px-4">Turn your scripts and ideas into engaging videos in minutes.</p>
+      </div>
+      <div class="feature-card">
+        <img src="https://img.icons8.com/ios-filled/64/2563eb/layers.png" alt="Templates" />
+        <h3 class="text-xl font-semibold mb-2 mt-4">Customizable Templates</h3>
+        <p class="text-gray-600 text-center px-4">Choose from hundreds of professionally designed video templates.</p>
+      </div>
+      <div class="feature-card">
+        <img src="https://img.icons8.com/ios-filled/64/2563eb/microphone.png" alt="AI Voiceover" />
+        <h3 class="text-xl font-semibold mb-2 mt-4">AI Voiceovers</h3>
+        <p class="text-gray-600 text-center px-4">Generate natural-sounding voiceovers directly from your text.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS SECTION -->
+  <section id="how-it-works" class="max-w-7xl mx-auto px-6 py-20 bg-gray-50">
+    <h2 class="text-4xl font-extrabold text-center mb-12 text-gray-900">How It Works</h2>
+    <div class="flex flex-col md:flex-row justify-between gap-12 max-w-5xl mx-auto">
+      <div class="how-step">
+        <div class="step-number">1</div>
+        <div>
+          <h3 class="text-xl font-semibold mb-1">Enter Your Script</h3>
+          <p class="text-gray-700">Start by typing the text or script for your video.</p>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="step-number">2</div>
+        <div>
+          <h3 class="text-xl font-semibold mb-1">Pick a Template</h3>
+          <p class="text-gray-700">Select from a wide range of video styles and themes.</p>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="step-number">3</div>
+        <div>
+          <h3 class="text-xl font-semibold mb-1">Customize & Preview</h3>
+          <p class="text-gray-700">Add images, voiceovers, and tweak the video until perfect.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO PREVIEW -->
+  <section class="max-w-7xl mx-auto px-6 py-20 bg-white">
+    <h2 class="text-4xl font-extrabold text-center mb-12 text-gray-900">Preview Your Video</h2>
+    <div class="flex justify-center">
+      <video
+        controls
+        poster="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80"
+        class="rounded-lg shadow-lg max-w-full"
+        width="640"
+        height="360"
+      >
+        <source src="sample-video.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <p class="text-center mt-4 text-gray-600">This is a sample preview. Your generated video will appear here.</p>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials" class="max-w-7xl mx-auto px-6 py-20 bg-gray-50">
+    <h2 class="text-4xl font-extrabold text-center mb-12 text-gray-900">What Our Users Say</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-5xl mx-auto">
+      <blockquote class="testimonial-card">
+        <p>"This AI video maker saved me hours of work! The results are amazing."</p>
+        <footer>— Sarah K.</footer>
+      </blockquote>
+      <blockquote class="testimonial-card">
+        <p>"Easy to use and the AI voiceover feature is fantastic."</p>
+        <footer>— James T.</footer>
+      </blockquote>
+      <blockquote class="testimonial-card">
+        <p>"I love how customizable the templates are. Highly recommend!"</p>
+        <footer>— Priya M.</footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="max-w-7xl mx-auto px-6 py-20 bg-white">
+    <h2 class="text-4xl font-extrabold text-center mb-12 text-gray-900">Simple Pricing Plans</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-5xl mx-auto">
+      <div class="pricing-card border rounded-lg p-8 shadow hover:shadow-lg transition">
+        <h3 class="text-2xl font-semibold mb-4">Basic</h3>
+        <p class="text-gray-700 mb-6">Perfect for beginners</p>
+        <p class="text-4xl font-extrabold mb-6">$9<span class="text-lg font-normal">/mo</span></p>
+        <ul class="mb-6 space-y-2 text-gray-600">
+          <li>5 videos per month</li>
+          <li>Standard templates</li>
+          <li>Basic AI voiceover</li>
+        </ul>
+        <button class="w-full bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition">Choose Basic</button>
+      </div>
+      <div class="pricing-card border rounded-lg p-8 shadow hover:shadow-lg transition bg-blue-50 border-blue-300">
+        <h3 class="text-2xl font-semibold mb-4">Pro</h3>
+        <p class="text-gray-700 mb-6">For creators & professionals</p>
+        <p class="text-4xl font-extrabold mb-6">$29<span class="text-lg font-normal">/mo</span></p>
+        <ul class="mb-6 space-y-2 text-gray-600">
+          <li>50 videos per month</li>
+          <li>All templates & assets</li>
+          <li>Premium AI voiceover</li>
+        </ul>
+        <button class="w-full bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition">Choose Pro</button>
+      </div>
+      <div class="pricing-card border rounded-lg p-8 shadow hover:shadow-lg transition">
+        <h3 class="text-2xl font-semibold mb-4">Enterprise</h3>
+        <p class="text-gray-700 mb-6">For teams & agencies</p>
+        <p class="text-4xl font-extrabold mb-6">Contact Us</p>
+        <ul class="mb-6 space-y-2 text-gray-600">
+          <li>Unlimited videos</li>
+          <li>Custom templates</li>
+          <li>Dedicated support</li>
+        </ul>
+        <button class="w-full bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition">Contact Sales</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="max-w-7xl mx-auto px-6 py-20 bg-gray-50">
+    <h2 class="text-4xl font-extrabold text-center mb-12 text-gray-900">Get in Touch</h2>
+    <form class="max-w-3xl mx-auto space-y-6" onsubmit="event.preventDefault(); alert('Thank you for reaching out!')">
+      <div>
+        <label for="name" class="block mb-2 font-semibold">Name</label>
+        <input
+          type="text"
+          id="name"
+          required
+          class="w-full border border-gray-300 rounded px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="Your full name"
+        />
+      </div>
+      <div>
+        <label for="email" class="block mb-2 font-semibold">Email</label>
+        <input
+          type="email"
+          id="email"
+          required
+          class="w-full border border-gray-300 rounded px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+        />
+      </div>
+      <div>
+        <label for="message" class="block mb-2 font-semibold">Message</label>
+        <textarea
+          id="message"
+          rows="5"
+          required
+          class="w-full border border-gray-300 rounded px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="Write your message here"
+        ></textarea>
+      </div>
+      <button type="submit" class="bg-blue-600 text-white px-8 py-3 rounded hover:bg-blue-700 transition">
+        Send Message
       </button>
     </form>
-    <p class="text-sm text-gray-500 mt-2">* This is a demo. Video generation is coming soon.</p>
-  </div>
-  <div class="flex-1 max-w-md">
-    <img
-      src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80"
-      alt="Creative video concept"
-      class="rounded-lg shadow-lg"
-      loading="lazy"
-    />
-  </div>
-</section>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-white border-t border-gray-200 mt-20 py-8">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-gray-600 text-sm">
+      <p>&copy; 2025 AI Video Maker. All rights reserved.</p>
+      <nav class="space-x-6 mt-4 md:mt-0">
+        <a href="#" class="hover:text-blue-600 transition">Privacy Policy</a>
+        <a href="#" class="hover:text-blue-600 transition">Terms of Service</a>
+        <a href="#" class="hover:text-blue-600 transition">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>
